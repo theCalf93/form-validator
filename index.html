@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./interfaceForm.css">
+    <title>FORM</title>
+</head>
+<body>
+    <div id="main">
+        <div id="content">
+
+            <div class="header">
+                <h2>Create account</h2>
+            </div>
+
+            <form action="post" id="form">
+
+                <div class="formGroup">
+                    <label>Name</label>
+                    <input id="name" name="name" type="text" placeholder="Username">
+                    <span class="span"></span>
+                </div>
+                
+                <div class="formGroup">
+                    <label>Email</label>
+                    <input id="email" name="email" type="text" placeholder="abc@gmail.com">
+                    <span class="span"></span>
+                </div>
+
+                <div class="formGroup">
+                    <label>Password</label>
+                    <input id="password" name="password" type="password" placeholder="password">
+                    <span class="span"></span>
+                </div>
+
+                <div class="formGroup">
+                    <label>Password check</label>
+                    <input id="password2" name="password" type="password" placeholder="password check">
+                    <span class="span"></span>
+                </div>
+
+                <button>Submit</button>
+
+            </form>
+        </div>
+    </div>
+
+    <script src="./form.js"></script>
+    <script>
+        
+        form({
+            form: '#form',
+            rule: [
+                form.isRequired('#name'),
+                form.isEmail('#email'),
+                form.minlength('#password',8),
+                form.isconfirm('#password2',function(){
+                    return document.querySelector('#form #password').value
+                })
+            ]
+        })
+
+        // const form = document.getElementById('form');
+        // const Username = document.getElementById('name');
+        // const eamil = document.getElementById('email');
+        // const password = document.getElementById('password');
+        // const password2 = document.getElementById('password2');
+
+        
+
+    </script>
+    
+</body>
+</html>
